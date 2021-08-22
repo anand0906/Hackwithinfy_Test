@@ -1,11 +1,14 @@
 from django.db import models
-
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 
 
 def mypath_2(instance,filename):
 	return "Input_{}/image_{}".format(instance.item.id,filename)
 
+class RecievingFromApp():
+	input =  ArrayField(
+            models.CharField(max_length=200, blank=True))
 
 class Item(models.Model):
 	title=models.CharField(max_length=255,null=True,blank=True)
